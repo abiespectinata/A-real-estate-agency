@@ -55,39 +55,39 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
         ";
         // line 6
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 19
+        // line 20
         echo "    </head>
     <body>
         ";
-        // line 21
+        // line 22
         echo $this->extensions['App\Twig\HeaderExtension']->displayHeader();
         echo "
 
     ";
-        // line 23
-        $context["flashes"] = twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 23, $this->source); })()), "flashes", [], "any", false, false, false, 23);
         // line 24
+        $context["flashes"] = twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 24, $this->source); })()), "flashes", [], "any", false, false, false, 24);
+        // line 25
         echo "        ";
-        if ((isset($context["flashes"]) || array_key_exists("flashes", $context) ? $context["flashes"] : (function () { throw new RuntimeError('Variable "flashes" does not exist.', 24, $this->source); })())) {
-            // line 25
+        if ((isset($context["flashes"]) || array_key_exists("flashes", $context) ? $context["flashes"] : (function () { throw new RuntimeError('Variable "flashes" does not exist.', 25, $this->source); })())) {
+            // line 26
             echo "            <div class=\"container pt-3 text-center\">
             ";
-            // line 27
+            // line 28
             echo "                ";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["flashes"]) || array_key_exists("flashes", $context) ? $context["flashes"] : (function () { throw new RuntimeError('Variable "flashes" does not exist.', 27, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["flashes"]) || array_key_exists("flashes", $context) ? $context["flashes"] : (function () { throw new RuntimeError('Variable "flashes" does not exist.', 28, $this->source); })()));
             foreach ($context['_seq'] as $context["label"] => $context["messages"]) {
-                // line 28
+                // line 29
                 echo "                    ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($context["messages"]);
                 foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                    // line 29
+                    // line 30
                     echo "                        <div  id=\"messageFlash\" class=\"alert alert-";
                     echo twig_escape_filter($this->env, $context["label"], "html", null, true);
                     echo " alert-dismissible fade show\" role='alert'>
                             ";
-                    // line 30
+                    // line 31
                     echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                     echo "
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">x</span></button>
@@ -97,32 +97,32 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 34
+                // line 35
                 echo "                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['label'], $context['messages'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 35
+            // line 36
             echo "            </div>
         ";
         }
-        // line 37
-        echo "
-        ";
         // line 38
-        $this->displayBlock('body', $context, $blocks);
+        echo "
+        ";
         // line 39
-        echo "
-        ";
+        $this->displayBlock('body', $context, $blocks);
         // line 40
-        $this->loadTemplate("main/footer.html.twig", "base.html.twig", 40)->display($context);
-        // line 41
         echo "
         ";
+        // line 41
+        $this->loadTemplate("main/footer.html.twig", "base.html.twig", 41)->display($context);
         // line 42
+        echo "
+        ";
+        // line 43
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 58
+        // line 59
         echo "    </body>
     
 </html>
@@ -166,14 +166,15 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
 
         // line 7
         echo "            <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\">
-            <link rel=\"stylesheet\" href=\"/css/agency.css\">
-            <link rel=\"stylesheet\" href=\"/css/all.css\">
+            <link rel=\"stylesheet\" href=\"css/all.css\">
+            <link rel=\"stylesheet\" href=\"css/agency.css\">
+            <link rel=\"stylesheet\" href=\"css/agency.min.css\">
             <link href=\"";
-        // line 10
+        // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("vendor/bootstrap/css/bootstrap.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
             <link href=\"";
-        // line 11
+        // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("vendor/fontawesome-free/css/all.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\">
             <link href=\"https://fonts.googleapis.com/css?family=Montserrat:400,700\" rel=\"stylesheet\" type=\"text/css\">
@@ -182,7 +183,7 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
             <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
             <link href=\"https://fonts.googleapis.com/css?family=Lato&display=swap\" rel=\"stylesheet\">
             <link href=\"";
-        // line 17
+        // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/agency.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
         ";
@@ -194,7 +195,7 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
 
     }
 
-    // line 38
+    // line 39
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -212,7 +213,7 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
 
     }
 
-    // line 42
+    // line 43
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -222,38 +223,38 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 43
+        // line 44
         echo "            <script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("vendor/jquery/jquery.min.js"), "html", null, true);
         echo "\"></script>
             <script src=\"";
-        // line 44
+        // line 45
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("vendor/bootstrap/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
 
             <!-- Plugin JavaScript -->
             <script src=\"";
-        // line 47
+        // line 48
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("vendor/jquery-easing/jquery.easing.min.js"), "html", null, true);
         echo "\"></script>
 
             <!-- Contact form JavaScript -->
             <script src=\"";
-        // line 50
+        // line 51
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jqBootstrapValidation.js"), "html", null, true);
         echo "\"></script>
             <script src=\"";
-        // line 51
+        // line 52
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/contact_me.js"), "html", null, true);
         echo "\"></script>
 
             <!-- Custom scripts for this template -->
             <script src=\"";
-        // line 54
+        // line 55
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/agency.min.js"), "html", null, true);
         echo "\"></script>
             <script src=\"";
-        // line 55
+        // line 56
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/homes.js"), "html", null, true);
         echo "\"></script>
             <script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>
@@ -278,7 +279,7 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
 
     public function getDebugInfo()
     {
-        return array (  257 => 55,  253 => 54,  247 => 51,  243 => 50,  237 => 47,  231 => 44,  226 => 43,  216 => 42,  198 => 38,  186 => 17,  177 => 11,  173 => 10,  168 => 7,  158 => 6,  139 => 5,  126 => 58,  124 => 42,  121 => 41,  119 => 40,  116 => 39,  114 => 38,  111 => 37,  107 => 35,  101 => 34,  91 => 30,  86 => 29,  81 => 28,  76 => 27,  73 => 25,  70 => 24,  68 => 23,  63 => 21,  59 => 19,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  258 => 56,  254 => 55,  248 => 52,  244 => 51,  238 => 48,  232 => 45,  227 => 44,  217 => 43,  199 => 39,  187 => 18,  178 => 12,  174 => 11,  168 => 7,  158 => 6,  139 => 5,  126 => 59,  124 => 43,  121 => 42,  119 => 41,  116 => 40,  114 => 39,  111 => 38,  107 => 36,  101 => 35,  91 => 31,  86 => 30,  81 => 29,  76 => 28,  73 => 26,  70 => 25,  68 => 24,  63 => 22,  59 => 20,  57 => 6,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -290,8 +291,9 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\">
-            <link rel=\"stylesheet\" href=\"/css/agency.css\">
-            <link rel=\"stylesheet\" href=\"/css/all.css\">
+            <link rel=\"stylesheet\" href=\"css/all.css\">
+            <link rel=\"stylesheet\" href=\"css/agency.css\">
+            <link rel=\"stylesheet\" href=\"css/agency.min.css\">
             <link href=\"{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}\" rel=\"stylesheet\">
             <link href=\"{{ asset('vendor/fontawesome-free/css/all.min.css') }}\" rel=\"stylesheet\" type=\"text/css\">
             <link href=\"https://fonts.googleapis.com/css?family=Montserrat:400,700\" rel=\"stylesheet\" type=\"text/css\">
@@ -343,6 +345,6 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
     </body>
     
 </html>
-", "base.html.twig", "C:\\laragon\\www\\Symfony\\agence\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\natha\\OneDrive\\Bureau\\Agency\\templates\\base.html.twig");
     }
 }

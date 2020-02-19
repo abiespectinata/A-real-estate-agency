@@ -658,8 +658,6 @@ class __TwigTemplate_34c5453012a545d89726b5e4e0801f7e64b23f0df6183e5b150af943e36
                 </div>
                 <div class=\"form-group\">
                   <input class=\"form-control\" name=\"phone\" type=\"tel\" minlength=\"10\" placeholder=\"Numéro de téléphone (facultatif)\">
-                  <p class=\"help-block text-danger\"></p>
-                </div>
                 <div class=\"form-group\">
                   <textarea class=\"form-control\" name=\"message\" placeholder=\"Nous vous écoutons...\" rows=\"8\" minlength=\"30\" required=\"required\" data-validation-required-message=\"Entrez votre message\"></textarea>
                   <p class=\"help-block text-danger\"></p>
@@ -1012,8 +1010,6 @@ class __TwigTemplate_34c5453012a545d89726b5e4e0801f7e64b23f0df6183e5b150af943e36
                 </div>
                 <div class=\"form-group\">
                   <input class=\"form-control\" name=\"phone\" type=\"tel\" minlength=\"10\" placeholder=\"Numéro de téléphone (facultatif)\">
-                  <p class=\"help-block text-danger\"></p>
-                </div>
                 <div class=\"form-group\">
                   <textarea class=\"form-control\" name=\"message\" placeholder=\"Nous vous écoutons...\" rows=\"8\" minlength=\"30\" required=\"required\" data-validation-required-message=\"Entrez votre message\"></textarea>
                   <p class=\"help-block text-danger\"></p>
@@ -1033,6 +1029,6 @@ class __TwigTemplate_34c5453012a545d89726b5e4e0801f7e64b23f0df6183e5b150af943e36
   <script async defer crossorigin=\"anonymous\" src=\"https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v6.0\"></script>
   
 {% endblock %}
-", "homes/home.html.twig", "C:\\laragon\\www\\Symfony\\agence\\templates\\homes\\home.html.twig");
+", "homes/home.html.twig", "C:\\Users\\natha\\OneDrive\\Bureau\\Agency\\templates\\homes\\home.html.twig");
     }
 }
