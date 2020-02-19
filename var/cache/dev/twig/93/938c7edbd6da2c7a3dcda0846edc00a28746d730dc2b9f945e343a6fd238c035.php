@@ -167,8 +167,8 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
         // line 7
         echo "            <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\">
             <link rel=\"stylesheet\" href=\"css/all.css\">
-            <link rel=\"stylesheet\" href=\"css/agency.css\">
-            <link rel=\"stylesheet\" href=\"css/agency.min.css\">
+            <link rel=\"stylesheet\" href=\"/css/agency.css\">
+            <link rel=\"stylesheet\" href=\"/css/agency.min.css\">
             <link href=\"";
         // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("vendor/bootstrap/css/bootstrap.min.css"), "html", null, true);
@@ -292,8 +292,8 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
         {% block stylesheets %}
             <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\">
             <link rel=\"stylesheet\" href=\"css/all.css\">
-            <link rel=\"stylesheet\" href=\"css/agency.css\">
-            <link rel=\"stylesheet\" href=\"css/agency.min.css\">
+            <link rel=\"stylesheet\" href=\"/css/agency.css\">
+            <link rel=\"stylesheet\" href=\"/css/agency.min.css\">
             <link href=\"{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}\" rel=\"stylesheet\">
             <link href=\"{{ asset('vendor/fontawesome-free/css/all.min.css') }}\" rel=\"stylesheet\" type=\"text/css\">
             <link href=\"https://fonts.googleapis.com/css?family=Montserrat:400,700\" rel=\"stylesheet\" type=\"text/css\">
