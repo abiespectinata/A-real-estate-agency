@@ -166,7 +166,7 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
 
         // line 7
         echo "            <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\">
-            <link rel=\"stylesheet\" href=\"css/all.css\">
+            <link rel=\"stylesheet\" href=\"/css/all.css\">
             <link rel=\"stylesheet\" href=\"/css/agency.css\">
             <link rel=\"stylesheet\" href=\"/css/agency.min.css\">
             <link href=\"";
@@ -291,7 +291,7 @@ class __TwigTemplate_1fadf68a5fa966c71a817e4e122fe6ea1e676a028c908f4166f670cfa95
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\">
-            <link rel=\"stylesheet\" href=\"css/all.css\">
+            <link rel=\"stylesheet\" href=\"/css/all.css\">
             <link rel=\"stylesheet\" href=\"/css/agency.css\">
             <link rel=\"stylesheet\" href=\"/css/agency.min.css\">
             <link href=\"{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}\" rel=\"stylesheet\">
