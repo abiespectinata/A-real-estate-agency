@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ACHATS{% endblock %}
+
+{% block body %}
+
+{% if is_granted('ROLE_USER') %}
+        <!-- Pour les membres on affiche les maisons exclusives également -->
+        {% set homes = exclusivehomes %}
+        {% set nbhomes = nbExclusivehomes %}
+    {% else %}
+        {% set homes = limitedhomes %}
+        {% set nbhomes = nblimitedhomes %}
+    {% endif %}
+
+    <!--Calcul du nombre de pages à afficher -->
+    {% set nbPages = (nbhomes[0][1] / limitPerPage)|round(0, 'ceil') %}
+
+<h1 class= "text-center mt-5 mb-5">Acheter un bien immobilier</h1>
+
+<div>
+    <section class= "d-block mw-100" style ="background:url('https://www.leloupimmobilier.fr/resources/banniere-3.jpg') no-repeat center center fixed; background-size:cover;">
+        <span class="background-dark-homes"><p class="text-white text-center">Vous souhaitez acheter un bien immobilier ? <br>
+        AgenceImmo vous propose le meilleur choix parmi les maisons et les appartements de votre région. <br>
+        Trouvez dès maintenant votre bonheur parmi nos annonces !</p></span>
+    </section>
+</div>
+
+{{ render(controller('App\\Controller\\SearchController::searchForm')) }}
+
+{% if homes is empty %}
+    <div class="col-12 my-5 text-center">
+        <p class="my-5">Nos biens ont été victimes de leurs succès, nous n'avons plus de biens en vente pour le moment. N'hésitez pas à revenir, nous mettons régulièrement nos biens à jour.</p>
+    </div>
+{% endif %}
+
+{# Annonces #}
+<div class="container" id="portfolio">
+    <div class="row">
+        {% if nbPages > 1 %}
+
+            {# Number of page around current page+1 #}
+            {% set nearbyPagesLimit = 4 %}
+
+            <div>
+                <ul class="pagination">
+                    {% if currentPage != 1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path('buy', { 'page': 1 }) }}">&laquo;</a>
+                    </li>
+                    {% endif %}
+                    {% for i in 1..nbPages %}
+                        {% if 0 == (currentPage - nearbyPagesLimit) - loop.index %} {# dot before #}
+                            <li class="page-item disabled"><a href="#">...</a></li>
+                        {% elseif 0 == (currentPage + nearbyPagesLimit) - loop.index %} {# dot after #}
+                            <li class="page-item disabled"><a href="#">...</a></li>
+                        {% elseif 0 < (currentPage - nearbyPagesLimit) - loop.index %} {# hide all before #}
+                        {% elseif 0 > (currentPage + nearbyPagesLimit) - loop.index %} {# hide all after #}
+                        {% else %}
+                            <li {% if currentPage == loop.index  %} class="page-item active" {% endif %}>
+                                <a href="{{ path('buy', { 'page': loop.index }) }}" class="page-link">{{ loop.index }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if currentPage != nbPages %}
+                    <li class="page-item">
+                        <a href="{{ path('buy', { 'page': nbPages }) }}" class="page-link">&raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+    <div class = "row">
+    {% for home in homes %}
+        <div class="col-md-4 mb-4">
+            {% include 'shared/homeItem.html.twig' with {home: home, description:true} %}
+        </div>
+    {% endfor %}
+    </div>
+
+</div> 
+
+
+{% endblock %}

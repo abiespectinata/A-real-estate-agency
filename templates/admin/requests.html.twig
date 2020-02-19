@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demandes{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center mt-5">Liste des demandes</h1>
+
+    <section class="container" id="demandes">
+        <div class="row">
+        {% if homes is empty %}
+            <div class="col-12 my-5 text-center">
+                Il n'y a pas de demandes actuellement
+            </div>
+        {% else %}
+        
+            {% for home in homes %}
+            
+                <div class="col-12">
+                    <h2 class="my-3">Référence du bien : # {{ home.id }}</h2>
+                </div>
+                <div class="col-md-5">
+                    {% include 'shared/homeItem.html.twig' with {home: home, heart:'no'} %}
+                </div>
+                <div class="col-md-7 border-left">
+                    {% for request in home.requests %}
+                    <div class="border-top px-2 py-3">
+                        <p class="font-weight-light">Référence # {{ request.id }} <span class="text-uppercase">({{ request.home.service }})</span> -- Le {{request.createdat|date("d/m/Y")}}</p>
+                        <p class="titreDemande font-weight-bold">Demande de {{ request.user.firstname }} {{ request.user.lastname }}</p>
+                        <p class="text-uppercase pt-2">Informations personnelles :</p>
+                        <p><span class="font-weight-bold">Travail</span> : {{ request.job }} ({{ request.contract }}) {% if request.salary %}- {{ request.salary }} € / mois{% endif %}
+                        </p>
+                        <p><span class="font-weight-bold">Situation</span> : {{ request.age }} ans - {{ request.situation }}</p>
+                        <p class="text-uppercase pt-2">Informations logement :</p>
+                        <p>
+                            <span class="font-weight-bold">Occupants :</span> 
+                            {{ request.numberresidents }} 
+                            {% if request.animals %}(avec animal){% endif %}              
+                        </p>
+                        <p>
+                            <span class="font-weight-bold">Garantie :</span> 
+                            {% if request.guarantor %}
+                                {% if request.home.service == 'location' %}
+                                    Avec garant
+                                {% else %}
+                                    Avec apport
+                                {% endif %}
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </p>
+                        {% if request.requeststatus == 0 %}
+                        {# je suis ton maitre jeune padawan #}
+                            <div class="d-flex">
+                                <a href="{{ path('answerRequest', {id:request.id, action:'accept'}) }}" class="btn btn-success">Accepter</a>
+                                <a href="{{ path('answerRequest', {id:request.id, action:'refuse'}) }}"  class="btn btn-danger mx-2">Refuser</a>
+                                <a href="{{ path('usersProfil', {id:request.user.id}) }}" class="btn btn-warning">Voir le profil</a>
+                            </div>
+                        {% elseif request.refusedat != NULL %}
+                            <p class="text-danger">Demande déjà refusée</p>
+                        {% else %}
+                            <p class="text-success">Demande validée</p>
+                        {% endif %}
+                    </div>
+                        
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </section>
+{% endblock %}

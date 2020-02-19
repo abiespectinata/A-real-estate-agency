@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Postuler{% endblock %}
+
+{% block body %}
+
+<div class="py-5 container">
+    <h1 class="text-center mt-md-5">Faire une demande</h1>
+
+    {% if userRequest %}
+    <div class="row my-md-5">
+        <div class="col-12 my-md-5">
+            <p class="text-center my-5 text-{{ userRequest.getStatusResponseColor }}">{{ userRequest.responseRequest}}</p>
+        </div>
+    </div>
+    {% else %}
+        {{ form_start(form) }}    
+            <div class="row">
+            
+                <div class="col-12 col-md-6 my-2">{{form_row(form.job)}}</div>
+                <div class="col-12 col-md-3 my-2">{{form_row(form.contract)}}</div>
+                <div class="col-12 col-md-3 my-2">{{form_row(form.salary)}}</div>
+
+                <div class="col-12 col-md-6 my-2">{{form_row(form.age)}}</div>
+                <div class="col-12 col-md-6 my-2">{{form_row(form.situation)}}</div>
+
+                <div class="col-12 col-md-4 my-2 text-center align-self-center pb-0">{{form_row(form.numberresidents)}}</div>
+                <div class="col-12 col-md-4 my-2">{{form_row(form.animals)}}</div>
+                <div class="col-12 col-md-4 my-2">{{form_row(form.guarantor)}}</div>
+            </div>
+            <div class="consentement row border-top">
+                <p>En vous inscrivant, vous acceptez que AgenceImmo mémorise et utilise vos données personnelles collectées dans ce formulaire dans le but d'améliorer votre expérience et vos interactions avec nos services.</p>
+                <p>En l'occurence, vous autorisez la société AgenceImmo à communiquer avec vous s'il le juge opportun afin de vous apporter des informations complémentaires sur ses produits, ses services et ses offres marketing, via les coordonnées collectées dans le formulaire.</p>
+                <p>Afin de protéger la confidentialité de vos données personnelles, AgenceImmo s'engage à ne pas divulguer, ne pas transmettre, ni partager vos données personnelles avec d'autres entités, entreprises ou organismes, quels qu'ils soient.</p>
+                <p><strong>En cochant la case ci-après, vous donner votre consentement au traitement de vos données personnelles par AgenceImmo, conformément au Règlement Général de Protection des Données de 2018 et à notre politique de protection des données</strong></p>
+                {{ form_row(form.agreeTerms) }}
+            </div>
+        {{ form_end(form) }}
+    {% endif %}
+</div>
+
+{% endblock %}

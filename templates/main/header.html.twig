@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container">
+		<a class="navbar-brand" href="{{ path('index') }}"><img id="logo" src="{{ asset('img/logo.png') }}" alt="AgenceImmo"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('index') }}">Accueil</span></a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Nos biens
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="nav-link dropdown-item" href="{{ path('renting') }}">Location</span></a>
+						<a class="nav-link dropdown-item" href="{{ path('buy') }}">Vente</span></a>
+					</div>
+				</li> 
+				<li class="nav-item">
+				    <a class="nav-link" href="{{ path('apropos') }}">A propos</a>
+				</li>
+				<li class="nav-item">
+				    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+				</li>
+				<li class="nav-item">
+				    <a class="nav-link" href="{{ path('search_homes') }}">Recherche</a>
+				</li>
+			</ul>
+            <ul class="navbar-nav">
+				{% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Admin
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+									<a href="{{ path('accueil', {_switch_user: '_exit' }) }}" class="nav-link text-danger dropdown-item">Récupérer ses droits d'admin</a>
+								{% endif %}
+								<a href="{{ path('homeCrud', {'id': 0}) }}" class="nav-link dropdown-item">Ajouter un bien</a>
+								<a href="{{ path('adminHomes') }}" class="nav-link dropdown-item">Pannel admin</a>
+								<a href="{{ path('requests') }}" class="nav-link dropdown-item">Les demandes</a>
+								<a href="{{ path('stat') }}" class="nav-link dropdown-item">Statistiques</a>
+								{# <a href="{{ path('password_update') }}" class="nav-link dropdown-item">Changer de mot de passe</a> #}
+							</div>
+						</li> 
+                    {% elseif  is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a href="{{ path('likedHomes') }}" class="nav-link">Mes biens préférés</a>
+                        </li>
+					{% endif %}
+					<li class="nav-item">
+						<a href="{{ path('app_logout') }}" class="nav-link">Déconnexion</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a href="{{ path('app_register') }}" class="nav-link">Inscription</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ path('app_login') }}" class="nav-link">Connexion</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>

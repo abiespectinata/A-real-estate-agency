@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouveau bien{% endblock %}
+
+{% block body %}
+
+{% if nouveau %}
+    <h1 class="text-center mt-5">Ajouter un bien</h1>
+{% else %}
+    <a href="{{ path('homeCrud', {id: home.id, action: 'delete'})}}" class="float-right">Supprimer</a>
+    <h1 class="text-center mt-5">{{home.title}}</h1>
+{% endif %}
+
+<div class="py-5 container">
+    {{ form_start(form) }}    
+        <div class="row">
+        
+            <div class="col-12 col-md-6 my-2">{{form_row(form.type)}}</div>
+            <div class="col-12 col-md-6 my-2">{{form_row(form.service)}}</div>
+
+            <div class="col-12 col-md-6 my-2">{{form_row(form.bedrooms)}}</div>
+            <div class="col-12 col-md-6 my-2">{{form_row(form.bathrooms)}}</div>
+
+            <div class="col-12 col-md-4 my-2">{{form_row(form.rooms)}}</div>
+            <div class="col-12 col-md-4 my-2">{{form_row(form.surface)}}</div>
+            <div class="col-12 col-md-4 my-2 text-center align-self-center pb-0">{{form_row(form.furnished)}}</div>
+
+            <div class="col-12 col-md-6 my-2">{{form_row(form.price)}}</div>
+            <div class="col-12 col-md-6 my-2">{{form_row(form.active)}}</div>
+
+            <div class="col-12 my-2">{{form_row(form.adress)}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 my-2">{{form_row(form.title)}}</div>
+            <div class="col-12 my-2">{{form_row(form.description)}}</div>
+
+            <div class="col-12">
+                {{form_row(form.pictures)}}
+                <span id="all_pictures"></span>
+            </div>
+
+            <div class="col-12">
+                {{form_row(form.googlemap)}}
+                <span>Accéder à <a href="https://www.google.fr/maps" target="_blank">GoogleMap</a></span>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+
+    
+
+{% endblock %}
+
+{% block javascripts %} 
+    {{ parent() }}
+    <script>
+        $('.custom-file-input').on('change', function(event) {
+            var inputFile = event.currentTarget;
+            for(i=0; i<inputFile.files.length; i++) {
+                    $(inputFile).parent()
+                .find('.custom-file-label')
+                .append(inputFile.files[i].name + ' ; ');
+            };
+            $('#all_pictures').html('Nombre de photos : ' +inputFile.files.length);
+        });
+
+    </script>
+{% endblock %}

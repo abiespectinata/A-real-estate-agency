@@ -1,0 +1,16 @@
+<div class="barredeC container">
+    {{ form_start(form) }}  
+        <div class="row border-top border-bottom text-center"> 
+            <div class="col-lg-2 my-lg-5 mt-3"><b>{{form_row(form.type)}}</b></div>
+            <div class="col-lg-2 my-lg-5"><b>{{form_row(form.service)}}</b></div>
+            <div class="col-lg-2 my-lg-5"><b>{{form_row(form.minSurface)}}</b></div>
+            <div class="col-lg-2 my-lg-5"><b>{{form_row(form.maximumPrice)}}</b></div>
+            <div class="col-lg-2 my-lg-5"><b>{{form_row(form.rooms)}}</b></div>
+            <div class="col-lg-2 my-lg-5 mb-3"><b>{{form_row(form.furnished)}}</b></div>
+        </div>
+        <div class="row d-flex justify-content-end">
+            <button id="submit" class="btn btn-warning text-uppercase text-light float-right mr-2 my-2" type="submit">Envoyer</button>
+            <a href="{{ path('search_homes') }}" id="reset" class="btn btn-secondary text-uppercase float-right mx-2 my-2" type="reset">Réinitialiser</a>
+        </div>
+    {{ form_end(form) }} 
+</div>

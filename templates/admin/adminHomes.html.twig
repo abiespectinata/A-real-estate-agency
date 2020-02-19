@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pannel admin{% endblock %}
+
+{% block stylesheets %} 
+    {{ parent() }}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-html5-1.6.1/b-print-1.6.1/datatables.min.css"/>
+    {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center my-5">Tous les biens</h1>
+
+    <table id="myTable" class="table table-hover my-5">
+        <thead>
+            <tr>
+                <th scope="col">Référence</th>
+                <th scope="col">Type</th>
+                <th scope="col">Service</th>
+                <th scope="col">Disponibilité</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for home in homes %}
+                <tr>
+                    <th scope="row">#{{ home.id }}</th>
+                    <td class="">{{ home.type }}</td>
+                    <td class="">{{ home.service }}</td>
+                    <td class="">
+                        {% if home.active == 3 %}
+                            <a href="{{ path('usersProfil', {id:home.currentuser.id }) }}" class="text-dark">
+                                {{home.currentuser.firstname}} {{home.currentuser.lastname}} (#{{home.currentuser.id}})
+                            </a>    
+                        {% elseif home.active == 0 %}
+                            <span class="text-danger">Non disponible</span>
+                        {% elseif home.active == 2 %}
+                            <span class="text-warning">Exclusivité</span>
+                        {% else %}
+                            <span class="text-success">Disponible</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="actionsDropDownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                            <div class="dropdown-menu" aria-labelledby="actionsDropDownButton">
+                                <a href="{{ path('homeCrud', {id: home.id}) }}" class="dropdown-item my-0" >Modifier informations</a>
+                                {# <a href="{{ path('', {id: home.id}) }}" class="dropdown-item my-0">Supprimer membre</a> #}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="mb-5">
+        <a href="{{ path('adminHomes') }}" class="btn btn-secondary mt-5">Revenir à tous les biens</a>
+        <a href="{{ path('adminHomes', {filter:'occupied'}) }}" class="btn btn-secondary mt-5">Afficher les biens occupés</a>
+    </div>
+    
+    
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-html5-1.6.1/b-print-1.6.1/datatables.min.js"></script>
+    <script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+    </script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour et Bienvenue à l'Agence Immo !
+{% endblock %}
+
+{% block body %}
+
+	<div>
+		<section class="d-block mw-100" style="background:url('https://i.pinimg.com/originals/5a/98/bd/5a98bd2145842ea87cce31e68a93c8bc.jpg') no-repeat center center fixed; background-size:cover;">
+			<p class="text-white  text-center">
+				<span class="bg-dark">Vous souhaitez acheter un bien immobilier ?
+					<br>
+					AgenceImmo vous propose le meilleur choix parmi les maisons et les appartements de votre région.
+					<br>
+					Faire des rêves immobiliers une réalité !</span>
+			</p>
+		</section>
+	</div>
+	<br>
+	<center>
+		<h1 class="text-warning">
+			Page De Contact</h1>
+	</center>
+	<section id="Page De Contact">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-4 text-center">
+					<h5 class="section-subheading text-muted">
+						<h6>Les deux seuls noms que vous devez connaître pour des réponses honnêtes.</h6>
+						<p style="text-align: justify;">N'hésitez pas, rendez-nous visite! Nos bureaux sont le reflet de notre travail, ils sont situés dans un environnement privilégié, en première ligne à Homme De Fer.</p>
+					</h3>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.336798318632!2d7.742750515664675!3d48.58424977926156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c84dd6f2f69f%3A0xbce3e81d79126b67!2s1%20Place%20de%20l&#39;Homme%20de%20Fer%2C%2067000%20Strasbourg!5e0!3m2!1sfr!2sfr!4v1581156403050!5m2!1sfr!2sfr" width="300" height="170" frameborder="0" style="border:0;" allowfullscreen="" class="w-100"></iframe>
+				</div>
+				{# Forum De Contact #}
+				<div class="col-lg-4 text-center">
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					<button class="btn btn-primary">Soumettre</button>
+					{{ form_end(form) }}
+				</div>
+			
+
+			{# Texte De Description de Contact #}
+			<hr width="100%" align="center">
+			<p style="text-align: justify;">Les informations recueillies sur ce formulaire avec votre consentement sont enregistrées dans un fichier informatisé par l'Agence Immo WF3  1 place de l'Homme de fer, 67000 Strasbourg. Elles sont nécessaires à la mise en oeuvre des services associés à "Contact  adhésion", ci-avant décrits et sont conservées pendant 3 ans. Vos données sont destinées à l'Agence Immobilère WF3.</p>
+			<p style="text-align: justify;">&laquo;&nbsp;CONTACTEZ NOTRE AGENCE SANS PLUS ATTENDRE. &nbsp;&raquo; Vous disposez d'un droit d'accès de modification, de rectification, d'opposition, de suppression et de portabilités des données vous concernant. Pour toute demande, adressez-vous à agenceimmowf3@gmail.com. Vous pouvez introduire une réclamation auprès de nous.</p>
+			<hr width="100%" align="center">
+		</div>
+	</section>
+{% endblock %}

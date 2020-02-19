@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center my-5">S'inscrire</h1>
+
+    {{ form_start(form) }}
+
+    <div class="row">
+        <div class="col-md-6">{{ form_row(form.firstname) }}</div>
+        <div class="col-md-6">{{ form_row(form.lastname) }}</div>
+    </div>
+        {{ form_row(form.phone) }}
+        {{ form_row(form.email) }}
+    <div class="row">
+        <div class="col-md-6">{{ form_row(form.password.first) }}</div>
+        <div class="col-md-6">{{ form_row(form.password.second) }}</div>
+    </div>
+    <div class="consentement row border-top">
+        <p>En vous inscrivant, vous acceptez que AgenceImmo mémorise et utilise vos données personnelles collectées dans ce formulaire dans le but d'améliorer votre expérience et vos interactions avec nos services.</p>
+        <p>En l'occurence, vous autorisez la société AgenceImmo à communiquer avec vous s'il le juge opportun afin de vous apporter des informations complémentaires sur ses produits, ses services et ses offres marketing, via les coordonnées collectées dans le formulaire.</p>
+        <p>Afin de protéger la confidentialité de vos données personnelles, AgenceImmo s'engage à ne pas divulguer, ne pas transmettre, ni partager vos données personnelles avec d'autres entités, entreprises ou organismes, quels qu'ils soient.</p>
+        <p><strong>En cochant la case ci-après, vous donner votre consentement au traitement de vos données personnelles par AgenceImmo, conformément au Règlement Général de Protection des Données de 2018 et à notre politique de protection des données</strong></p>
+        {{ form_row(form.agreeTerms) }}
+    </div>
+        
+        
+
+    <div class="text-right mb-4">
+        <button class="btn btn-primary">S'inscrire</button>
+    </div>
+        
+    {{ form_end(form) }}
+</div>
+{% endblock %}

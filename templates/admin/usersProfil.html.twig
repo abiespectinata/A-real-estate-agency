@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil {{ user.firstname }} {{ user.lastname }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h1 class="my-5">Profil de {{ user.firstname }} {{ user.lastname }} (#{{ user.id }})</h1>
+            </div>
+            <div class="col-md-6 border-right">
+                <p><span class="font-weight-bold">Identité</span></p>
+                <p>Age : {{ user.profil.age }} ans</p>
+                <p>Situation : {{ user.profil.situation }}</p>
+                <p>
+                    Profession : {{ user.profil.job }} - {{ user.profil.contract }} 
+                    {% if user.profil.salary %}
+                        ( {{ user.profil.salary }} € / mois )
+                    {% endif %}
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p><span class="font-weight-bold">Informations</span></p>
+                <p>Numéro de téléphone : {{ user.phone }}</p>
+                <p>Email : {{ user.email }}</p>
+                <p>
+                    Profil : 
+                    {% if user.active %}
+                        Activé
+                    {% else %}
+                        Non activé
+                    {% endif %}
+                </p>
+            </div>
+        </div> <!-- /row -->
+        <div class="my-4">
+            <nav class="mb-4">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Bien aimés</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Bien possédés</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+                        {% for home in user.likes %}
+                            <div class="col-md-4 my-2 mb-5">
+                                <p>Ref: #{{home.id}}</p>
+                                <p>{{ home.service }} - {{ home.type }}</p>
+                                <p>{{ home.adress }}</p>
+                                <p>Prix : {{ home.price }} € 
+                                    {% if home.service == "location" %}
+                                        / mois
+                                    {% endif %}
+                                </p>
+                                <a class="btn btn-primary" href="{{ path('home', {id:home.id}) }}">Voir le bien</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="row">
+                        {% for home in user.currenthomes %}
+                            <div class="col-md-4 my-2 mb-5">
+                                <p>Ref: #{{home.id}}</p>
+                                <p>{{ home.service }} - {{ home.type }}</p>
+                                <p>{{ home.adress }}</p>
+                                <p>Prix : {{ home.price }} € 
+                                    {% if home.service == "location" %}
+                                        / mois
+                                    {% endif %}
+                                </p>
+                                <a class="btn btn-primary" href="{{ path('home', {id:home.id}) }}">Voir le bien</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {# <div class="row mt-3 mb-5 pb-5 border-bottom">
+            <div class="col-12">
+                <p><span class="font-weight-bold">Biens aimés</span></p>
+            </div>
+            {% for home in user.likes %}
+                <div class="col-md-4 my-2 mb-5 my-md-0">
+                    <p>Ref: #{{home.id}}</p>
+                    <p>{{ home.service }} - {{ home.type }}</p>
+                    <p>{{ home.adress }}</p>
+                    <p>Prix : {{ home.price }} € 
+                        {% if home.service == "location" %}
+                            / mois
+                        {% endif %}
+                    </p>
+                    <a class="btn btn-primary" href="{{ path('home', {id:home.id}) }}">Voir le bien</a>
+                </div>
+            {% endfor %}
+        </div> <!-- /row -->
+        <div class="row mt-3 mb-5">
+            <div class="col-12">
+                <p><span class="font-weight-bold">Biens possédés</span></p>
+            </div>
+            {% for home in user.currenthomes %}
+                <div class="col-md-4 my-2 mb-5 my-md-0">
+                    <p>Ref: #{{home.id}}</p>
+                    <p>{{ home.service }} - {{ home.type }}</p>
+                    <p>{{ home.adress }}</p>
+                    <p>Prix : {{ home.price }} € 
+                        {% if home.service == "location" %}
+                            / mois
+                        {% endif %}
+                    </p>
+                    <a class="btn btn-primary" href="{{ path('home', {id:home.id}) }}">Voir le bien</a>
+                </div>
+            {% endfor %}
+        </div> <!-- /row --> #}
+    </div>
+
+{% endblock %}
+
+{# <p class="font-weight-light">Référence # {{ request.id }} <span class="text-uppercase">({{ request.home.service }})</span> -- Le {{request.createdat|date("d/m/Y")}}</p>
+                        <p class="titreDemande font-weight-bold">Demande de {{ request.user.firstname }} {{ request.user.lastname }}</p>
+                        <p class="text-uppercase pt-2">Informations personnelles :</p>
+                        <p><span class="font-weight-bold">Travail</span> : {{ request.job }} ({{ request.contract }}) {% if request.salary %}- {{ request.salary }} € / mois{% endif %}
+                        </p>
+                        <p><span class="font-weight-bold">Situation</span> : {{ request.age }} ans - {{ request.situation }}</p>
+                        <p class="text-uppercase pt-2">Informations logement :</p>
+                        <p>
+                            <span class="font-weight-bold">Occupants :</span> 
+                            {{ request.numberresidents }} 
+                            {% if request.animals %}(avec animal){% endif %}              
+                        </p>
+                        <p>
+                            <span class="font-weight-bold">Garantie :</span> 
+                            {% if request.guarantor %}
+                                {% if request.home.service == 'location' %}
+                                    Avec garant
+                                {% else %}
+                                    Avec apport
+                                {% endif %}
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </p> #}

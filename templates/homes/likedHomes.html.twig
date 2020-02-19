@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes biens préférés{% endblock %}
+
+{% block body %}
+
+<div class="container" id="bien_prefere">
+    <div class="row my-5">
+        <div class="col-12 text-center mb-5">
+            <h1 class="section-heading">Mes biens préférés</h1>
+        </div>
+    
+
+        {% if homes is empty %}
+            <div class="col-12 my-5 text-center">
+                <p class="my-5">Vous n'avez pas de biens préférés</p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        {% for home in homes %}
+            <div class="col-md-6 mb-4">
+                {% include 'shared/homeItem.html.twig' with {home: home} %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
